@@ -1,2 +1,5 @@
 # Home-Credit-Default-Risk
-Kaggle Compeition
+# Brief Introduction of the model
+1. The first step is to clean the data as well as extracting the features. Then I apply the LightGBM to make prediction.
+2. There are two ways to extract features. The first one is given by Ann Antonova (https://www.kaggle.com/aantonova). Each client has a credit history which can be viewed as a multi-dimensional time series. We can treat each dimension as a single dimension time series, and extracted the several features of each single time series. This result in a large number of features including the redundant ones. We then select those that will only help the prediction. The way that I deal with this is a little bit different. Instead of treating the credit history as multi-dimensional time series, I treated it as samples coming from the same distribution. So for each client, I assume their credit history follow the same distribution with different mean value and variance covariance matrix. And for each client, I will get the mean value and the correlation as a summary of his previous history. Then I filter out those features that does not help prediction, and apply LightGBM to make prediction.
+3. After obtaining the prediction from my model and Ann's model, I blended these two models together using simple logistic regression.
