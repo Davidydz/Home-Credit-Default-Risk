@@ -13,4 +13,4 @@ b. The way that I deal with this is a little bit different. Instead of treating 
 The algorithm that I choose is LightGBM, and hyper-parameters are selected using Bayesian-Optimization. 
 
 ## 3. Blend Model 
-After obtaining the prediction from my model and Ann's model, I blended these two models together using simple logistic regression. The choice of using logistic regression is to avoid overfitting.
+After obtaining the prediction from my model and Ann's model, the final score is a linear combination of scores from the two models. The optimal weights is chosen by grid search which result in the highest AUC.
